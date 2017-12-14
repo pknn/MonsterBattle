@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="battleSummaryPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BattleSummaryController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../component/rel/scene/Summary.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="statusText" layoutX="110.0" layoutY="266.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="YOU'VE RAN AWAY" textAlignment="CENTER" wrappingWidth="579.1810302734375">
+         <font>
+            <Font name="Avenir Black" size="53.0" />
+         </font>
+      </Text>
+      <Text layoutX="357.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REWARD">
+         <font>
+            <Font name="Avenir Heavy" size="20.0" />
+         </font>
+      </Text>
+      <GridPane layoutX="213.0" layoutY="329.0" prefHeight="37.0" prefWidth="374.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="123.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="85.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="61.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="129.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GOLD" textAlignment="RIGHT" wrappingWidth="106.66000366210938">
+               <font>
+                  <Font name="Avenir Heavy" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="goldRewardText" strokeType="OUTSIDE" strokeWidth="0.0" text="1800" wrappingWidth="82.66000366210938" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Avenir Heavy" size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EXP" textAlignment="RIGHT" wrappingWidth="53.660003662109375" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Avenir Heavy" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="expRewardText" strokeType="OUTSIDE" strokeWidth="0.0" text="1990" wrappingWidth="89.66000366210938" GridPane.columnIndex="3">
+               <font>
+                  <Font name="Avenir Heavy" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </GridPane>
+      <Button blendMode="MULTIPLY" layoutX="339.0" layoutY="427.0" mnemonicParsing="false" onAction="#continueButtonEvent" prefHeight="60.0" prefWidth="122.0" text="Continue">
+         <font>
+            <Font name="Avenir Medium" size="18.0" />
+         </font>
+      </Button>
+      <Text fx:id="specialText" layoutX="244.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level up &amp; Skill unlocked" textAlignment="CENTER" wrappingWidth="311.45499420166016">
+         <font>
+            <Font name="Avenir Next Demi Bold" size="23.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
