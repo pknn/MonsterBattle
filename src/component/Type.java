@@ -1,11 +1,18 @@
 package component;
 
+/**
+ * Enumerator "Type" for monster
+ * This enum contains monster type and method to return weak type of any type.
+ *
+ * @author Pakanon Pantisawat
+ */
 public enum Type {
     FIRE,
     WATER,
     WIND;
 
     private Type weakType;
+
     static {
         FIRE.weakType = WATER;
         WATER.weakType = WIND;
@@ -14,10 +21,6 @@ public enum Type {
 
     public Type getWeakType() {
         return weakType;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(Type.FIRE.weakType);
     }
 
     @Override

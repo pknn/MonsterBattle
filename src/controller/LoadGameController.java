@@ -4,7 +4,10 @@ import component.Monster;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -12,7 +15,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 
-public class LoadGameController extends ResourceController {
+import static controller.ResourceController.gh;
+import static controller.ResourceController.player;
+
+/**
+ * FXML Controller class for Load game Scene
+ * This class check for available slot or empty slot
+ * and shift direction between locker room and create character scene
+ *
+ * @author Pakanon Pantisawat
+ */
+
+public class LoadGameController {
 
     private Monster[] players;
 
@@ -110,6 +124,7 @@ public class LoadGameController extends ResourceController {
         } else {
             url = this.getClass().getClassLoader().getResource("fxml/CreateCharacter.fxml");
         }
+        if (url == null) return;
         AnchorPane pane = FXMLLoader.load(url);
         loadGamePane.getChildren().setAll(pane);
     }
@@ -133,6 +148,7 @@ public class LoadGameController extends ResourceController {
     @FXML
     void backButtonEvent() throws IOException {
         URL url = this.getClass().getClassLoader().getResource("fxml/Start.fxml");
+        if (url == null) return;
         AnchorPane pane = FXMLLoader.load(url);
         loadGamePane.getChildren().setAll(pane);
     }

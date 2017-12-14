@@ -3,8 +3,14 @@ package controller;
 import component.GameHelper;
 import component.Monster;
 
-public class ResourceController {
-    public static GameHelper gh = new GameHelper();
-    public static Monster player;
-    public static Monster opponent;
+/**
+ * Resource for every controller.
+ *
+ * @author Pakanon Pantisawat
+ */
+
+class ResourceController {
+    static GameHelper gh = new GameHelper();
+    static Monster player;
+    static Monster opponent;
 }

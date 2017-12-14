@@ -1,5 +1,11 @@
 package component;
 
+/**
+ * Status class is a class for status object
+ * Contain all the status for monster and helper method.
+ *
+ * @author Pakanon Pantisawat
+ */
 public class Status {
     private double atk;
     private double def;

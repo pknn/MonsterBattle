@@ -2,6 +2,13 @@ package component;
 
 import javafx.scene.image.Image;
 
+/**
+ * This class contain all attribute for monster
+ * and helper method
+ *
+ * @author Pakanon Pantisawat
+ */
+
 public class Monster {
     private int id;
     private int gold;
@@ -75,6 +82,7 @@ public class Monster {
                 break;
         }
     }
+
     private void setStatus() {
         this.status = new Status(this.level, this.type);
     }
@@ -164,7 +172,7 @@ public class Monster {
         }
     }
 
-    public void setType(Type type) {
+    private void setType(Type type) {
         this.type = type;
         setStatus();
         setImage();
@@ -225,7 +233,7 @@ public class Monster {
 
     public double botPerform(Monster player) {
         int perform = new java.util.Random().nextInt(9) + 1;
-        double damage = 0.0;
+        double damage;
         if (perform < 5) damage = attackPerform(player);
         else {
             if (this.level < 7) damage = skillPerform(player, 1);

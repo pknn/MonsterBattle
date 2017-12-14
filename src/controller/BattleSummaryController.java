@@ -8,10 +8,13 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 
-import static controller.ResourceController.gh;
-import static controller.ResourceController.opponent;
-import static controller.ResourceController.player;
+import static controller.ResourceController.*;
 
+/**
+ * FXML Controller class for Battle Summary scenes
+ *
+ * @author Pakanon Pantisawat
+ */
 public class BattleSummaryController {
 
     @FXML

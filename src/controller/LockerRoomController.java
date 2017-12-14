@@ -14,6 +14,12 @@ import java.net.URL;
 
 import static controller.ResourceController.player;
 
+/**
+ * FXML Controller class for Locker Room Scene
+ * This class check for battle and back button event
+ *
+ * @author Pakanon Pantisawat
+ */
 public class LockerRoomController {
 
     @FXML
@@ -98,6 +104,7 @@ public class LockerRoomController {
             url = this.getClass().getClassLoader().getResource("fxml/LoadGame.fxml");
             player = null;
         }
+        if (url == null) return;
         AnchorPane pane = FXMLLoader.load(url);
         lockerPane.getChildren().setAll(pane);
     }

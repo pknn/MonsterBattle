@@ -7,6 +7,12 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * FXML Controller class for Start Scene
+ *
+ * @author Pakanon Pantisawat
+ */
+
 public class StartController {
     @FXML
     private AnchorPane startPane;

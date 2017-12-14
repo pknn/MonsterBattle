@@ -12,7 +12,14 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 
-public class BattleChoiceController extends ResourceController {
+import static controller.ResourceController.*;
+
+/**
+ * FXML Controller Class for Battle Choice Scene
+ *
+ * @author Pakanon Pantisawat
+ */
+public class BattleChoiceController {
     private Monster[] opponents;
 
     @FXML
@@ -98,6 +105,7 @@ public class BattleChoiceController extends ResourceController {
     @FXML
     void slotButtonEvent(ActionEvent event) throws IOException {
         if (event.getSource().equals(buttonSlot1)) {
+
             opponent = opponents[0];
         } else if (event.getSource().equals(buttonSlot2)) {
             opponent = opponents[1];

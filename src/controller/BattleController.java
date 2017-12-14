@@ -19,7 +19,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BattleController extends ResourceController {
+import static controller.ResourceController.opponent;
+import static controller.ResourceController.player;
+
+/**
+ * FXML Controller class for Battle Scene
+ *
+ * @author Pakanon Pantisawat
+ */
+public class BattleController {
 
     @FXML
     private AnchorPane battlePane;
@@ -119,6 +127,7 @@ public class BattleController extends ResourceController {
             perform((int)player.skillPerform(opponent, 2));
         } else if (event.getSource().equals(runAwayButton)) {
             URL url = this.getClass().getClassLoader().getResource("fxml/BattleSummary.fxml");
+            if (url == null) return;
             AnchorPane pane = FXMLLoader.load(url);
             battlePane.getChildren().setAll(pane);
         }
@@ -241,11 +250,11 @@ public class BattleController extends ResourceController {
             if (player.isDead() || opponent.isDead()) {
                 URL url = this.getClass().getClassLoader().getResource("fxml/BattleSummary.fxml");
                 if (url == null) return;
-                AnchorPane pane = null;
+                AnchorPane pane;
                 try {
                     pane = FXMLLoader.load(url);
                 } catch (IOException exception) {
-                    System.out.println(exception);
+                    return;
                 }
                 battlePane.getChildren().setAll(pane);
             }

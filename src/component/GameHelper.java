@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * This class is helper class for the game.
+ * All the stuff about files will be manage here.
+ *
+ * @author Pakanon Pantisawat
+ */
 public class GameHelper {
     private final String path = "gameSave.save";
 
@@ -28,9 +35,17 @@ public class GameHelper {
             int exp = Integer.parseInt(sc.nextLine());
             String typeLine = sc.nextLine();
             Type type;
-            if (typeLine.equals("Fire")) type = Type.FIRE;
-            else if (typeLine.equals("Water")) type = Type.WATER;
-            else type = Type.WIND;
+            switch (typeLine) {
+                case "Fire":
+                    type = Type.FIRE;
+                    break;
+                case "Water":
+                    type = Type.WATER;
+                    break;
+                default:
+                    type = Type.WIND;
+                    break;
+            }
             int gold = Integer.parseInt(sc.nextLine());
             monsterList.add(new Monster(id, name, exp, type, gold));
         }
@@ -46,13 +61,11 @@ public class GameHelper {
         saveGame();
     }
 
-    public boolean deleteSave(Monster monster) {
+    public void deleteSave(Monster monster) {
         int index = monsterList.indexOf(monster);
-        if (index == -1) return false;
-        else {
+        if (index != -1) {
             monsterList.remove(monster);
             saveGame();
-            return true;
         }
     }
 
@@ -83,7 +96,7 @@ public class GameHelper {
         java.util.Random random = new java.util.Random();
         Monster[] monsters = new Monster[3];
         for (int i = 0; i < 3; i++) {
-            int lv = baseLevel = random.nextInt(27) % 3;
+            int lv = baseLevel + random.nextInt(27) % 3;
             int reward = 13 * lv + 20 + random.nextInt(20);
             monsters[i] = new Monster(getMonsterName(), 0, random.nextInt(18) % 3 + 1);
             while (monsters[i].getLevel() < lv) {

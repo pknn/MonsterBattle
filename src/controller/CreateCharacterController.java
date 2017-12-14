@@ -8,7 +8,10 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -16,8 +19,16 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 
+import static controller.ResourceController.gh;
+import static controller.ResourceController.player;
 
-public class CreateCharacterController extends ResourceController {
+/**
+ * FXML Controller class for Create Character scene
+ *
+ * @author Pakanon Pantisawat
+ */
+
+public class CreateCharacterController {
 
     @FXML
     private AnchorPane createCharacterPane;
@@ -99,6 +110,7 @@ public class CreateCharacterController extends ResourceController {
             gh.addSave(player);
         }
         URL url = this.getClass().getClassLoader().getResource("fxml/LoadGame.fxml");
+        if (url == null) return;
         AnchorPane pane = FXMLLoader.load(url);
         createCharacterPane.getChildren().setAll(pane);
     }
