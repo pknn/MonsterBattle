@@ -59,7 +59,7 @@ public class Monster {
 
     private boolean setLevel() {
         setSkills();
-        if (exp < getCriteria()) return false;
+        if (exp < getCriteria() || this.level >= 10) return false;
         while (exp >= getCriteria()) {
             exp -= getCriteria();
             level++;
