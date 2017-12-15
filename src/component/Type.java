@@ -6,6 +6,7 @@ package component;
  *
  * @author Pakanon Pantisawat
  */
+
 public enum Type {
     FIRE,
     WATER,

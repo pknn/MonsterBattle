@@ -107,6 +107,8 @@ public class BattleController {
         if (player.getLevel() < 7) {
             skill2Button.setDisable(true);
             skill2Button.setText("Unavailable");
+        } else {
+            skill2Button.setText(player.getSkill()[1]);
         }
 
         if (opponent.getStatus().getSpd() > player.getStatus().getSpd()) {
@@ -173,7 +175,7 @@ public class BattleController {
         oppDmg = new KeyValue(playerDamage.textProperty(), null);
         atkBtn = new KeyValue(attackButton.disableProperty(), false);
         sk1Btn = new KeyValue(skill1Button.disableProperty(), false);
-        if (player.getLevel() > 7) sk2Btn = new KeyValue(skill2Button.disableProperty(), false);
+        if (player.getLevel() >= 7) sk2Btn = new KeyValue(skill2Button.disableProperty(), false);
         rnaBtn = new KeyValue(runAwayButton.disableProperty(), false);
         oppHp = new KeyValue(opponentHp.textProperty(), String.valueOf(opponent.getStatus().getHp()));
 
@@ -227,7 +229,7 @@ public class BattleController {
         oppDmg = new KeyValue(opponentDamage.textProperty(), null);
         atkBtn = new KeyValue(attackButton.disableProperty(), false);
         sk1Btn = new KeyValue(skill1Button.disableProperty(), false);
-        if (player.getLevel() > 7) sk2Btn = new KeyValue(skill2Button.disableProperty(), false);
+        if (player.getLevel() >= 7) sk2Btn = new KeyValue(skill2Button.disableProperty(), false);
         rnaBtn = new KeyValue(runAwayButton.disableProperty(), false);
         plyHp = new KeyValue(playerHp.textProperty(), String.valueOf(player.getStatus().getHp()));
 

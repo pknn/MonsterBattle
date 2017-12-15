@@ -110,6 +110,10 @@ public class Monster {
         this.image[1] = new Image(pathFlip);
     }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public void reset() {
         this.status = new Status(this.level, this.type);
     }
@@ -215,7 +219,7 @@ public class Monster {
         if (fail > 90) return 0;
 
         if (skill == 2) {
-            multiplier += 0.15;
+            multiplier += 0.85;
         }
         double damage = Math.floor((this.status.getAtk() - opponent.getStatus().getDef()) * multiplier);
         if (opponent.getStatus().getHp() - damage <= 0) damage = opponent.getStatus().getHp();

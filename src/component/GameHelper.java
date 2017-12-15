@@ -32,6 +32,7 @@ public class GameHelper {
             if (line.equals("")) continue;
             int id = Integer.parseInt(line.substring(1, line.length()));
             String name = sc.nextLine();
+            int level = Integer.parseInt(sc.nextLine());
             int exp = Integer.parseInt(sc.nextLine());
             String typeLine = sc.nextLine();
             Type type;
@@ -47,7 +48,9 @@ public class GameHelper {
                     break;
             }
             int gold = Integer.parseInt(sc.nextLine());
-            monsterList.add(new Monster(id, name, exp, type, gold));
+            Monster monster = new Monster(id, name, exp, type, gold);
+            monster.setLevel(level);
+            monsterList.add(monster);
         }
     }
 
@@ -77,6 +80,7 @@ public class GameHelper {
             for (Monster monster : monsterList) {
                 pw.println("#" + monster.getId());
                 pw.println(monster.getName());
+                pw.println(monster.getLevel());
                 pw.println(monster.getExp());
                 pw.println(monster.getType());
                 pw.println(monster.getGold());
@@ -100,9 +104,7 @@ public class GameHelper {
             int reward = 13 * lv + 20 + random.nextInt(20);
             monsters[i] = new Monster(getMonsterName(), 0, random.nextInt(18) % 3 + 1);
             monsters[i].setGold(reward);
-            while (monsters[i].getLevel() < lv) {
-                monsters[i].plusExp(monsters[i].getCriteria());
-            }
+            monsters[i].setLevel(lv);
         }
         return monsters;
     }
