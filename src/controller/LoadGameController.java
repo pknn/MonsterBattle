@@ -28,7 +28,7 @@ import static controller.ResourceController.player;
 
 public class LoadGameController {
 
-    private Monster[] players;
+    private Monster[] monsters;
 
     @FXML
     private AnchorPane loadGamePane;
@@ -118,8 +118,8 @@ public class LoadGameController {
         else if (event.getSource().equals(buttonSlot3)) slot = 3;
 
         URL url;
-        if (players.length >= slot) {
-            player = players[slot - 1];
+        if (monsters.length >= slot) {
+            player = monsters[slot - 1];
             url = this.getClass().getClassLoader().getResource("fxml/LockerRoom.fxml");
         } else {
             url = this.getClass().getClassLoader().getResource("fxml/CreateCharacter.fxml");
@@ -139,9 +139,9 @@ public class LoadGameController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.CANCEL) return;
 
-        if (event.getSource().equals(deleteSlot1)) gh.deleteSave(players[0]);
-        else if (event.getSource().equals(deleteSlot2)) gh.deleteSave(players[1]);
-        else gh.deleteSave(players[2]);
+        if (event.getSource().equals(deleteSlot1)) gh.deleteSave(monsters[0]);
+        else if (event.getSource().equals(deleteSlot2)) gh.deleteSave(monsters[1]);
+        else gh.deleteSave(monsters[2]);
         update();
     }
 
@@ -156,31 +156,31 @@ public class LoadGameController {
     private void update() {
         clear();
         gh.loadSave();
-        players = gh.getMonsters();
-        if (players.length > 0) {
-            imageSlot1.setImage(players[0].getImage(false));
-            nameSlot1.setText(players[0].getName());
-            typeSlot1.setText(players[0].getType().toString());
-            goldSlot1.setText(String.valueOf(players[0].getGold()));
-            levelSlot1.setText(String.valueOf(players[0].getLevel()));
+        monsters = gh.getMonsters();
+        if (monsters.length > 0) {
+            imageSlot1.setImage(monsters[0].getImage(false));
+            nameSlot1.setText(monsters[0].getName());
+            typeSlot1.setText(monsters[0].getType().toString());
+            goldSlot1.setText(String.valueOf(monsters[0].getGold()));
+            levelSlot1.setText(String.valueOf(monsters[0].getLevel()));
             labelSlot1.setText("LV");
             deleteSlot1.setDisable(false);
         }
-        if (players.length > 1) {
-            imageSlot2.setImage(players[1].getImage(false));
-            nameSlot2.setText(players[1].getName());
-            typeSlot2.setText(players[1].getType().toString());
-            goldSlot2.setText(String.valueOf(players[1].getGold()));
-            levelSlot2.setText(String.valueOf(players[1].getLevel()));
+        if (monsters.length > 1) {
+            imageSlot2.setImage(monsters[1].getImage(false));
+            nameSlot2.setText(monsters[1].getName());
+            typeSlot2.setText(monsters[1].getType().toString());
+            goldSlot2.setText(String.valueOf(monsters[1].getGold()));
+            levelSlot2.setText(String.valueOf(monsters[1].getLevel()));
             labelSlot2.setText("LV");
             deleteSlot2.setDisable(false);
         }
-        if (players.length > 2) {
-            imageSlot3.setImage(players[2].getImage(false));
-            nameSlot3.setText(players[2].getName());
-            typeSlot3.setText(players[2].getType().toString());
-            goldSlot3.setText(String.valueOf(players[2].getGold()));
-            levelSlot3.setText(String.valueOf(players[2].getLevel()));
+        if (monsters.length > 2) {
+            imageSlot3.setImage(monsters[2].getImage(false));
+            nameSlot3.setText(monsters[2].getName());
+            typeSlot3.setText(monsters[2].getType().toString());
+            goldSlot3.setText(String.valueOf(monsters[2].getGold()));
+            levelSlot3.setText(String.valueOf(monsters[2].getLevel()));
             labelSlot3.setText("LV");
             deleteSlot3.setDisable(false);
         }

@@ -117,14 +117,12 @@ public class BattleController {
 
     @FXML
     void actionButtonEvent(ActionEvent event) throws IOException {
-        if (player.getStatus().getHp() == 0 || opponent.getStatus().getHp() == 0) return;
-
         if (event.getSource().equals(attackButton)) {
-            perform((int)player.attackPerform(opponent));
+            perform(player.attackPerform(opponent));
         } else if (event.getSource().equals(skill1Button)) {
-            perform((int)player.skillPerform(opponent, 1));
+            perform(player.skillPerform(opponent, 1));
         } else if (event.getSource().equals(skill2Button)) {
-            perform((int)player.skillPerform(opponent, 2));
+            perform(player.skillPerform(opponent, 2));
         } else if (event.getSource().equals(runAwayButton)) {
             URL url = this.getClass().getClassLoader().getResource("fxml/BattleSummary.fxml");
             if (url == null) return;
@@ -134,6 +132,8 @@ public class BattleController {
     }
 
     private KeyFrame[] playerAction(int damage) {
+        if (player.isDead()) return new KeyFrame[0];
+        // all the keyframe stuff
         KeyValue oppHpBar = new KeyValue(opponentHpBar.progressProperty(), opponent.getStatus().getHp() / opponent.getStatus().getMaxHp());
         KeyValue oppHp = new KeyValue(opponentHp.textProperty(), String.valueOf(opponent.getStatus().getHp()));
         KeyValue atkBtn = new KeyValue(attackButton.disableProperty(), true);
@@ -178,11 +178,13 @@ public class BattleController {
         oppHp = new KeyValue(opponentHp.textProperty(), String.valueOf(opponent.getStatus().getHp()));
 
         KeyFrame framedot200s = new KeyFrame(new Duration(1800), oppHpBar, oppXValue, oppYValue, oppDmg, atkBtn, sk1Btn, sk2Btn, rnaBtn, oppHp);
-        if (player.isDead()) return new KeyFrame[0];
         return new KeyFrame[]{framedot0s, framedot15s, framedot100s, framedot125s, framedot175s, framedot200s};
     }
 
     private KeyFrame[] opponentAction(int time) {
+
+        if (opponent.isDead()) return new KeyFrame[0];
+        // all the keyframe stuff
         KeyValue plyHpBar = new KeyValue(playerHpBar.progressProperty(), player.getStatus().getHp() / player.getStatus().getMaxHp());
         KeyValue plyHp = new KeyValue(playerHp.textProperty(), String.valueOf(player.getStatus().getHp()));
         KeyValue atkBtn = new KeyValue(attackButton.disableProperty(), true);
@@ -202,7 +204,9 @@ public class BattleController {
 
         KeyFrame framedot1250s = new KeyFrame(new Duration(time + 1250), oppXValue, oppYValue);
 
-        int damage = (int)opponent.botPerform(player);
+
+        int damage = opponent.botPerform(player);
+
         player.getStatus().deHp(damage);
         KeyValue oppDmg = new KeyValue(opponentDamage.textProperty(), String.valueOf(damage));
         KeyValue playerYValue = new KeyValue(playerImage.yProperty(), playerImage.getY());
@@ -228,7 +232,6 @@ public class BattleController {
         plyHp = new KeyValue(playerHp.textProperty(), String.valueOf(player.getStatus().getHp()));
 
         KeyFrame framedot1800s = new KeyFrame(new Duration(time + 1800), playerXValue, playerYValue, oppDmg, plyHpBar, atkBtn, sk1Btn, sk2Btn, rnaBtn, plyHp);
-        if (opponent.isDead()) return new KeyFrame[0];
         return new KeyFrame[]{framedot0s, framedot1000s, framedot1250s, framedot1350s, framedot1550s, framedot1800s};
     }
 
@@ -248,15 +251,7 @@ public class BattleController {
 
         timeline.setOnFinished(e -> {
             if (player.isDead() || opponent.isDead()) {
-                URL url = this.getClass().getClassLoader().getResource("fxml/BattleSummary.fxml");
-                if (url == null) return;
-                AnchorPane pane;
-                try {
-                    pane = FXMLLoader.load(url);
-                } catch (IOException exception) {
-                    return;
-                }
-                battlePane.getChildren().setAll(pane);
+                runAwayButton.fire();
             }
         });
     }

@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
  */
 
 public class Monster {
+
     private int id;
     private int gold;
     private String name;
@@ -178,11 +179,6 @@ public class Monster {
         setImage();
     }
 
-    public void setExp(int exp) {
-        this.exp = exp;
-        setLevel();
-    }
-
     public boolean plusExp(int exp) {
         this.exp += exp;
         return setLevel();
@@ -192,7 +188,7 @@ public class Monster {
         this.gold += factor;
     }
 
-    public void setGold(int gold) {
+    void setGold(int gold) {
         this.gold = gold;
     }
 
@@ -201,22 +197,22 @@ public class Monster {
     }
 
     // ACTION PERFORM
-    public double attackPerform(Monster opponent) {
+    public int attackPerform(Monster opponent) {
         double multiplier = 1.0;
         double damageBonus = new java.util.Random().nextInt(10);
         if (opponent.getType().equals(this.type.getWeakType())) multiplier = 1.2;
         double damage = Math.floor(this.status.getAtk() - opponent.getStatus().getDef() * multiplier + damageBonus);
         if (opponent.getStatus().getHp() - damage <= 0) damage = opponent.getStatus().getHp();
-        return damage;
+        return (int) damage;
     }
 
-    public double skillPerform(Monster opponent, int skill) {
+    public int skillPerform(Monster opponent, int skill) {
         double multiplier = 2.0;
         if (this.type.equals(opponent.getType())) multiplier = 1.0;
         else if (opponent.getType().equals(this.type.getWeakType())) multiplier = 2.8;
 
         int fail = new java.util.Random().nextInt(99) + 1;
-        if (fail > 95) return 0;
+        if (fail > 90) return 0;
 
         if (skill == 2) {
             multiplier += 0.15;
@@ -224,14 +220,14 @@ public class Monster {
         double damage = Math.floor((this.status.getAtk() - opponent.getStatus().getDef()) * multiplier);
         if (opponent.getStatus().getHp() - damage <= 0) damage = opponent.getStatus().getHp();
 
-        return damage;
+        return (int) damage;
     }
 
     public boolean isDead() {
         return this.status.getHp() <= 0;
     }
 
-    public double botPerform(Monster player) {
+    public int botPerform(Monster player) {
         int perform = new java.util.Random().nextInt(9) + 1;
         double damage;
         if (perform < 5) damage = attackPerform(player);
@@ -239,6 +235,6 @@ public class Monster {
             if (this.level < 7) damage = skillPerform(player, 1);
             else damage = skillPerform(player, perform % 2);
         }
-        return damage;
+        return (int) damage;
     }
 }

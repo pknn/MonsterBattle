@@ -36,6 +36,7 @@ public class BattleSummaryController {
     void initialize() {
         int reward = 0;
         int exp = 0;
+
         if (player.isDead()) {
             statusText.setText("YOU LOSE");
             exp = opponent.getLevel() * 2;

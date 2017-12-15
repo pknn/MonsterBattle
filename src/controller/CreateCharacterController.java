@@ -87,8 +87,10 @@ public class CreateCharacterController {
 
     @FXML
     void nameInputEvent() {
-        if (nameField.getText().equals("") || nameField.getText().contains(" ")) createCharacterButton.setDisable(true);
-        else createCharacterButton.setDisable(false);
+        if (nameField.getText().equals("") || nameField.getText().contains(" "))
+            createCharacterButton.setDisable(true);
+        else
+            createCharacterButton.setDisable(false);
     }
 
     private int type = 1;
@@ -128,9 +130,9 @@ public class CreateCharacterController {
         KeyFrame frame = new KeyFrame(new Duration(1000), hpValue, atkValue, defValue, spdValue);
         timeline.getKeyFrames().add(frame);
         timeline.play();
-        hpLabel.setText(String.valueOf(player.getStatus().getHp()));
-        atkLabel.setText(String.valueOf(player.getStatus().getAtk()));
-        defLabel.setText(String.valueOf(player.getStatus().getDef()));
-        spdLabel.setText(String.valueOf(player.getStatus().getSpd()));
+        hpLabel.setText(String.format("%.0f", player.getStatus().getHp()));
+        atkLabel.setText(String.format("%.0f", player.getStatus().getAtk()));
+        defLabel.setText(String.format("%.0f", player.getStatus().getDef()));
+        spdLabel.setText(String.format("%.0f", player.getStatus().getSpd()));
     }
 }

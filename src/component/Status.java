@@ -7,6 +7,7 @@ package component;
  * @author Pakanon Pantisawat
  */
 public class Status {
+
     private double atk;
     private double def;
     private double spd;
@@ -33,7 +34,7 @@ public class Status {
         }
     }
 
-    public void deHp(double factor) {
+    public void deHp(int factor) {
         this.hp -= factor;
     }
 

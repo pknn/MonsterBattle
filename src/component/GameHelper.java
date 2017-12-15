@@ -99,6 +99,7 @@ public class GameHelper {
             int lv = baseLevel + random.nextInt(27) % 3;
             int reward = 13 * lv + 20 + random.nextInt(20);
             monsters[i] = new Monster(getMonsterName(), 0, random.nextInt(18) % 3 + 1);
+            monsters[i].setGold(reward);
             while (monsters[i].getLevel() < lv) {
                 monsters[i].plusExp(monsters[i].getCriteria());
             }
