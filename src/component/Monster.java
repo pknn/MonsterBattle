@@ -112,6 +112,7 @@ public class Monster {
 
     public void setLevel(int level) {
         this.level = level;
+        setStatus();
     }
 
     public void reset() {
