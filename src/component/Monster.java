@@ -110,7 +110,7 @@ public class Monster {
         this.image[1] = new Image(pathFlip);
     }
 
-    public void setLevel(int level) {
+    void setLevel(int level) {
         this.level = level;
         setStatus();
     }
