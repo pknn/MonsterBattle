@@ -84,7 +84,7 @@ public class LockerRoomController {
         goldText.setText(String.valueOf(player.getGold()));
         expCurrentText.setText(String.format("%d", player.getExp()));
         expCriteriaText.setText(String.format("/%d", player.getCriteria()));
-        expBar.setProgress(player.getExp() / player.getCriteria());
+        expBar.setProgress(player.getExp() / (double) player.getCriteria());
         hpText.setText(String.format("%.0f", player.getStatus().getHp()));
         hpBar.setProgress(player.getStatus().getHp() / 1000);
         atkText.setText(String.format("%.0f", player.getStatus().getAtk()));
